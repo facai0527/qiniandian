@@ -57,7 +57,7 @@ scene.add(rimLight)
 
 const loader = new GLTFLoader()
 const draco = new DRACOLoader()
-draco.setDecoderPath('/draco/')
+draco.setDecoderPath(`${import.meta.env.BASE_URL}draco/`)
 loader.setDRACOLoader(draco)
 
 const pointer = { x: 0, y: 0 }
@@ -427,9 +427,10 @@ function observeChapters() {
 }
 
 function loadModel() {
+  const baseUrl = import.meta.env.BASE_URL
   const url = isMobile
-    ? '/models/qiniandian_archive_mobile_v01.glb'
-    : '/models/qiniandian_archive_master_v01.glb'
+    ? `${baseUrl}models/qiniandian_archive_mobile_v01.glb`
+    : `${baseUrl}models/qiniandian_archive_master_v01.glb`
 
   loader.load(
     url,
