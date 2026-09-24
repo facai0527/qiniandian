@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [main, master]
   workflow_dispatch:
 
 permissions:
@@ -23,22 +23,28 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: lts/*
+          node-version: '22'
           cache: npm
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
-        run: npm run build
-
       - name: Configure GitHub Pages
+        id: pages
         uses: actions/configure-pages@v5
+
+      - name: Check required website assets
+        run: npm run check:assets
+
+      - name: Build for this repository or custom domain
+        run: npm run build
+        env:
+          QND_BASE_PATH: ${{ steps.pages.outputs.base_path }}/
 
       - name: Upload site
         uses: actions/upload-pages-artifact@v4

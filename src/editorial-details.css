@@ -1,0 +1,91 @@
+/* Local interface correction only: annotation cards and the closing page.
+   No camera, geometry, material, background-video or scroll-anchor changes. */
+.part-labels [data-part]{
+  display:grid;grid-template-columns:22px auto;column-gap:9px;row-gap:4px;
+  padding:9px 13px 10px 10px;border:0;border-left:2px solid var(--ochre);border-radius:0;
+  color:var(--charcoal);background:linear-gradient(100deg,#f5efe0f5,#f5efe0e8);
+  box-shadow:0 3px 14px #3e3a3312;letter-spacing:0;line-height:1.25;
+}
+.part-labels [data-part] i{grid-row:1/3;align-self:start;padding-top:3px;font:10px/1.4 ui-monospace,monospace;color:var(--ochre)}
+.part-labels [data-part] strong{font:500 16px/1.25 var(--serif);letter-spacing:.08em}
+.part-labels [data-part] small{grid-column:2;font:11px/1.5 -apple-system,BlinkMacSystemFont,"Microsoft YaHei",sans-serif;color:var(--pine-ink);letter-spacing:.03em}
+.part-labels [data-part]:after{height:13px;width:1px;left:50%;background:var(--ochre);opacity:.65}
+.part-labels [data-part]:before{content:"";position:absolute;top:calc(100% + 12px);left:calc(50% - 2px);width:5px;height:5px;border-radius:50%;background:var(--ochre);box-shadow:0 0 0 2px #f5efe099}
+/* Side-callout for the roof keeps its annotation clear of the fixed navigation. */
+@media(min-width:761px){
+  .part-labels [data-part="Hall_Roof"]{transform:translate(calc(-100% - 36px),-50%)}
+  .part-labels [data-part="Hall_Roof"]:after{width:36px;height:1px;left:100%;top:50%}
+  .part-labels [data-part="Hall_Roof"]:before{left:calc(100% + 34px);top:calc(50% - 2px)}
+  .part-labels [data-part="Hall_Interior"]{transform:translate(72px,-50%)}
+  .part-labels [data-part="Hall_Interior"]:after{width:72px;height:1px;left:-72px;top:50%}
+  .part-labels [data-part="Hall_Interior"]:before{left:-74px;top:calc(50% - 2px)}
+}
+
+.story-end{min-height:100svh;padding:clamp(126px,15vh,170px) 7.5vw 42px;scroll-margin-top:0}
+.story-end>.end-shell{width:100%;max-width:1240px;margin:0 auto}
+.end-kicker{display:flex;align-items:center;gap:26px;margin-bottom:46px;color:var(--ochre);font:12px/1.5 ui-monospace,monospace;letter-spacing:.14em}
+.end-kicker:after{content:"";flex:1;height:1px;background:linear-gradient(90deg,#7e54214d,transparent)}
+.end-kicker span:first-child{font:14px/1.5 var(--serif);letter-spacing:.2em}
+.end-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(48px,7vw,110px);align-items:center;margin-bottom:68px}
+.story-end .end-title-block h2{font:500 clamp(46px,4.4vw,68px)/1.55 var(--serif);letter-spacing:.045em;margin:0;white-space:nowrap}
+.end-title-rule{display:block;width:42px;height:2px;margin-top:28px;background:var(--ochre)}
+.story-end .end-reading p{max-width:none;margin:0 0 22px;font-size:17px;line-height:2;color:var(--pine-ink);text-wrap:pretty}
+.story-end .end-reading p:last-of-type{margin-bottom:0}
+.story-end .end-actions{display:flex;align-items:center;gap:18px 28px;margin:30px 0 0;flex-wrap:wrap}
+.end-replay{display:inline-flex;gap:20px;align-items:center;min-height:48px;border-bottom:1px solid var(--ochre);font-size:15px;color:var(--charcoal)}
+.end-replay i{display:grid;place-items:center;width:30px;height:30px;font:18px/1 sans-serif;font-style:normal;border:1px solid #7e54215e;border-radius:50%;transition:background .2s,color .2s}
+.end-replay:hover i{background:var(--charcoal);color:var(--moon-white)}
+.story-end .end-actions .text-link{display:inline-flex;align-items:center;min-height:48px;padding:0;border:0;font-size:14px;color:var(--pine-ink)}
+.story-end .end-actions .text-link:hover{text-decoration:underline;text-underline-offset:6px}
+.story-end .source-notes{margin:0;padding:0;border-top:1px solid #7e542140;border-bottom:1px solid #7e542140}
+.story-end .source-notes summary{display:flex;align-items:center;justify-content:space-between;min-height:64px;padding:12px 0;list-style:none;font-size:14px;letter-spacing:.06em}
+.source-notes summary::-webkit-details-marker{display:none}
+.notes-symbol{display:grid;place-items:center;width:32px;height:32px;font:24px/1 var(--serif);color:var(--ochre)}
+.source-notes[open] .notes-symbol{transform:rotate(45deg)}
+.source-notes-content{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(28px,6vw,90px);padding:0 0 24px}
+.story-end .source-notes-content p{font-size:14px;line-height:1.9;margin:0;max-width:none}
+.story-end .credits{display:flex;justify-content:space-between;gap:18px 32px;align-items:center;flex-wrap:wrap;margin:24px 0 0;padding:0;border:0;font-size:12px;line-height:1.8;letter-spacing:.06em}
+.credits i{font-style:normal;padding:0 10px;color:var(--ochre)}
+.story-end .credits [lang="en"]{font:10px/1.8 ui-monospace,monospace;letter-spacing:.12em}
+@media(min-width:1600px){.end-grid{gap:120px}.story-end{padding-top:154px}.end-kicker{margin-bottom:60px}.end-grid{margin-bottom:86px}}
+@media(max-width:1100px) and (min-width:761px){
+  .story-end{padding-left:6vw;padding-right:6vw}.end-grid{grid-template-columns:1fr 1fr;gap:36px}
+  .story-end .end-title-block h2{font-size:44px}.story-end .end-reading p{font-size:16px}
+  .part-labels [data-part]{padding:7px 10px;column-gap:6px;grid-template-columns:18px auto}.part-labels [data-part] strong{font-size:14px}.part-labels [data-part] small{font-size:10px}
+}
+@media(min-width:761px) and (max-width:900px){
+  .part-labels [data-part]{display:block;padding:7px 9px}
+  .part-labels [data-part] i,.part-labels [data-part] small{display:none}
+  .part-labels [data-part] strong{font-size:13px}
+  .part-labels [data-part="Hall_Columns"]{transform:translate(-20%,-100%)}
+  .part-labels [data-part="Hall_Columns"]:after{left:20%}
+  .part-labels [data-part="Hall_Columns"]:before{left:calc(20% - 2px)}
+  .part-labels [data-part="Hall_Interior"]{transform:translate(36px,-50%)}
+  .part-labels [data-part="Hall_Interior"]:after{width:36px;left:-36px}
+  .part-labels [data-part="Hall_Interior"]:before{left:-38px}
+  .part-labels [data-part="Hall_Windows"]{transform:translate(calc(-100% - 20px),-50%)}
+  .part-labels [data-part="Hall_Windows"]:after{width:20px;height:1px;left:100%;top:50%}
+  .part-labels [data-part="Hall_Windows"]:before{left:calc(100% + 18px);top:calc(50% - 2px)}
+}
+@media(max-width:760px){
+  .part-labels [data-part]{display:block;padding:4px 7px;border-left-width:1px;box-shadow:0 2px 6px #3e3a3310}
+  .part-labels [data-part] i,.part-labels [data-part] small{display:none}
+  .part-labels [data-part] strong{font:500 11px/1.3 -apple-system,BlinkMacSystemFont,"Microsoft YaHei",sans-serif;letter-spacing:.02em}
+  .part-labels [data-part]:after{height:6px}.part-labels [data-part]:before{top:calc(100% + 5px);width:3px;height:3px;left:calc(50% - 1px);box-shadow:none}
+  .part-labels [data-part="Hall_Columns"]{transform:translate(calc(-100% - 12px),-50%)}
+  .part-labels [data-part="Hall_Columns"]:after{width:12px;height:1px;left:100%;top:50%}
+  .part-labels [data-part="Hall_Columns"]:before{left:calc(100% + 11px);top:calc(50% - 1px)}
+  .part-labels [data-part="Hall_Interior"],.part-labels [data-part="Hall_Windows"]{transform:translate(12px,-50%)}
+  .part-labels [data-part="Hall_Interior"]:after,.part-labels [data-part="Hall_Windows"]:after{width:12px;height:1px;left:-12px;top:50%}
+  .part-labels [data-part="Hall_Interior"]:before,.part-labels [data-part="Hall_Windows"]:before{left:-13px;top:calc(50% - 1px)}
+  .story-end{padding:116px 24px 32px;min-height:100svh}
+  .end-kicker{gap:12px;margin-bottom:28px;font-size:9px;letter-spacing:.07em}.end-kicker span:first-child{font-size:12px;letter-spacing:.1em}.end-kicker:after{min-width:16px}
+  .end-grid{grid-template-columns:1fr;gap:30px;margin-bottom:40px}
+  .story-end .end-title-block h2{font-size:clamp(38px,10vw,48px);line-height:1.45;letter-spacing:.035em}
+  .end-title-rule{margin-top:20px;width:32px;height:1px}
+  .story-end .end-reading p{font-size:16px;line-height:1.9;margin-bottom:18px}
+  .story-end .end-actions{margin-top:24px;gap:12px 22px}.end-replay{font-size:14px;gap:14px}.story-end .end-actions .text-link{font-size:14px}
+  .story-end .source-notes summary{min-height:60px;font-size:13px}.source-notes-content{grid-template-columns:1fr;gap:18px;padding-bottom:22px}
+  .story-end .credits{display:grid;gap:8px;font-size:12px}.story-end .credits [lang="en"]{font-size:9px;letter-spacing:.06em}
+}
+@media(prefers-reduced-motion:reduce){.end-replay i{transition:none}}

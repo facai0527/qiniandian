@@ -1,0 +1,38 @@
+/* Compact floating masthead. Keep all existing navigation and model controls. */
+.site-nav{
+  left:50%;right:auto;top:20px;transform:translateX(-50%);width:max-content;max-width:calc(100% - 40px);
+  height:66px;padding:0 18px;gap:22px;border:1px solid #7e54212e;border-radius:40px;
+  background:linear-gradient(115deg,#f5efe0f5,#e8dcc5f2);
+  box-shadow:0 8px 28px #3e3a3312,0 1px 0 #fff8 inset;backdrop-filter:none;
+}
+.site-nav .brand{min-width:0;gap:10px;padding-right:22px;border-right:1px solid #7e542129;flex-shrink:0;min-height:36px}
+.site-nav .brand-mark{width:26px;height:34px;min-width:26px;border-radius:0;outline:0;font-size:11px;line-height:1.15;background:transparent;border-color:#7e54216b}
+.site-nav .brand-label{font:500 19px/1.25 var(--serif);letter-spacing:.1em}
+.site-nav .brand-label small{font:8px/1.6 ui-monospace,monospace;letter-spacing:.09em;margin-top:3px}
+.site-nav .top-links{display:flex;gap:3px;margin:0;background:transparent;align-items:center}
+.site-nav .top-links a{display:flex;align-items:center;justify-content:center;min-width:48px;min-height:38px;padding:0 11px;border-radius:24px;font-size:13px;letter-spacing:.03em;color:var(--pine-ink);transition:background .18s,color .18s}
+.site-nav .nav-index{display:none}
+.site-nav .top-links a:after{display:none}
+.site-nav .top-links a:hover{background:#7e54210c;color:var(--charcoal)}
+.site-nav .top-links a[aria-current]{background:var(--charcoal);color:var(--moon-white)}
+.site-nav .pill{min-height:38px;padding:0 15px;border:1px solid #7e542145;border-radius:24px;font-size:13px;background:transparent;color:var(--charcoal)}
+.site-nav .pill:hover,.site-nav .pill[aria-pressed="true"]{background:#7e542112;border-color:var(--ochre);color:var(--charcoal)}
+.site-nav .menu-toggle{display:none}
+@media(min-width:761px) and (max-width:900px){
+  .site-nav{gap:13px;padding:0 15px}.site-nav .brand{padding-right:13px;gap:8px}
+  .site-nav .brand-label{font-size:18px}.site-nav .brand-label small{font-size:7px}
+  .site-nav .top-links{gap:0}.site-nav .top-links a{min-width:42px;padding:0 9px;font-size:13px}.site-nav .pill{padding:0 11px;font-size:12px}
+}
+@media(max-width:760px){
+  .site-nav{top:13px;width:calc(100% - 32px);max-width:380px;height:58px;padding:0 13px;gap:10px;border-radius:32px}
+  .site-nav .brand{padding:0;border:0;margin-right:auto;gap:8px}.site-nav .brand-mark{width:22px;min-width:22px;height:29px;font-size:10px}
+  .site-nav .brand-label{font-size:18px}.site-nav .brand-label small{display:none}
+  .site-nav .pill{order:2;min-height:44px;padding:0 11px;font-size:12px}
+  .site-nav .menu-toggle{display:flex;order:3;align-items:center;justify-content:center;width:44px;height:44px;padding:0;border:0;border-radius:50%;margin:0;color:var(--charcoal);flex-shrink:0}
+  .site-nav .top-links{display:none;position:absolute;inset:calc(100% + 9px) 0 auto;width:auto;margin:0;padding:12px;background:#f5efe0fa;border:1px solid #7e54212e;border-radius:20px;box-shadow:0 8px 24px #3e3a331a;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+  .site-nav .top-links a{min-height:44px;min-width:0;padding:0 10px;border-radius:12px;font-size:14px;background:#7e542109}
+  .site-nav .top-links a[aria-current]{background:var(--charcoal);color:var(--moon-white)}
+  .site-nav[data-menu-open="true"] .top-links{display:grid}
+}
+@media(max-width:360px){.site-nav{gap:6px;padding:0 10px}.site-nav .brand{gap:6px}.site-nav .brand-label{font-size:17px}.site-nav .pill{padding:0 9px}}
+@media(prefers-reduced-motion:reduce){.site-nav .top-links a{transition:none}}

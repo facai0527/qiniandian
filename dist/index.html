@@ -1,243 +1,106 @@
 <!doctype html>
-<html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#111f2c" />
-    <meta
-      name="description"
-      content="走近北京天坛祈年殿，了解明清祈谷礼制、建筑沿革与世界遗产价值。"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap"
-      rel="stylesheet"
-    />
-    <title>祈年殿历史导览 · 天坛祈谷礼与建筑</title>
-    <script type="module" crossorigin src="/qiniandian/assets/index-3T_Oy5Pg.js"></script>
-    <link rel="stylesheet" crossorigin href="/qiniandian/assets/index-CGIAq9iq.css">
-  </head>
-  <body>
-    <div id="app">
-      <div class="scene-root" aria-hidden="true">
-        <div class="sky sky--base"></div>
-        <div class="sky sky--halo"></div>
-        <div class="sky sky--clouds"></div>
-        <div class="horizon-haze"></div>
-        <div class="model-aura"></div>
-        <canvas id="scene-canvas"></canvas>
-        <div class="scene-vignette"></div>
-        <div class="scene-grain"></div>
+<html lang="zh-CN" data-theme="gold-ink">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#D5C5AE">
+  <link rel="icon" type="image/svg+xml" href="/qiniandian/favicon.svg">
+  <meta name="description" content="走近北京天坛祈年殿，从蓝瓦、木构、门窗与藻井，读懂一座寄托丰年之愿的圆殿。">
+  <title>祈年殿 · 所祈为年，所愿为丰</title>
+  <script type="module" crossorigin src="/qiniandian/assets/story-BY3zKuUa.js"></script>
+  <link rel="modulepreload" crossorigin href="/qiniandian/assets/GLTFLoader-DnUNp9PQ.js">
+  <link rel="stylesheet" crossorigin href="/qiniandian/assets/story-I_WeNOcz.css">
+</head>
+<body data-model-state="loading">
+  <a class="skip" href="#story-end">跳过动态展示，阅读祈年殿介绍</a>
+  <header class="site-nav">
+    <a class="brand" href="#hero" data-step="0" aria-label="返回总览"><span class="brand-mark" aria-hidden="true">天<br>坛</span><span class="brand-label">祈年殿<small>TIANTAN · BEIJING</small></span></a>
+    <button class="menu-toggle" id="menu-toggle" type="button" aria-label="展开章节菜单" aria-expanded="false" aria-controls="chapter-menu"><span></span><span></span></button>
+    <nav class="top-links" id="chapter-menu" aria-label="滚动章节"><a href="#hero" data-step="0"><span class="nav-index" aria-hidden="true">01</span>总览</a><a href="#form" data-step="1"><span class="nav-index" aria-hidden="true">02</span>琉璃</a><a href="#structure" data-step="2"><span class="nav-index" aria-hidden="true">03</span>檐下</a><a href="#openings" data-step="3"><span class="nav-index" aria-hidden="true">04</span>门窗</a><a href="#interior" data-step="4"><span class="nav-index" aria-hidden="true">05</span>藻井</a><a href="#base" data-step="5"><span class="nav-index" aria-hidden="true">06</span>构成</a></nav>
+    <button class="pill" id="explore-model" disabled aria-pressed="false" aria-controls="model-viewport">自由观察 ↗</button>
+  </header>
+  <main>
+    <section class="story-track" id="scroll-story" aria-label="祈年殿六章滚动展示">
+      <div class="scene-screen">
+        <div class="sky" aria-hidden="true"><div class="aero-fallback"></div><div id="aero-background"></div></div><div class="sky-orbit" aria-hidden="true"></div><div class="horizon" aria-hidden="true"></div>
+        <div class="model-viewport" id="model-viewport" role="img" aria-label="祈年殿建筑展示，从外观细部到全景结构展开"><canvas id="story-canvas" aria-hidden="true"></canvas><div class="part-labels" id="part-labels" aria-hidden="true">
+          <span data-part="Hall_Roof"><i>01</i><strong>三重屋顶</strong><small>蓝瓦覆顶 · 层檐向天</small></span>
+          <span data-part="Hall_Columns"><i>02</i><strong>柱梁斗栱</strong><small>木构相承 · 托起重檐</small></span>
+          <span data-part="Hall_Windows"><i>04</i><strong>门窗围护</strong><small>朱红格扇 · 围合殿身</small></span>
+          <span data-part="Hall_Interior"><i>03</i><strong>殿内构架</strong><small>柱网环列 · 藻井居中</small></span>
+          <span data-part="Hall_Base"><i>05</i><strong>汉白玉台基</strong><small>三层圆台 · 白石为基</small></span>
+        </div></div>
+        <div class="reading-scrim" aria-hidden="true"></div><div class="glass-rail" aria-hidden="true"></div>
+        <div class="stage-meta"><b id="current-step">01 / 06 — 总览</b><span id="shot-label">QIGU ALTAR / BEIJING</span></div>
+        <div class="model-loading" role="status" aria-live="polite"><span id="load-message">正在走近祈年殿 · 0%</span><progress id="load-indicator" max="100" value="0" aria-label="场景载入进度"></progress><button type="button" id="retry-model" hidden>重新载入画面</button></div>
+        <nav class="journey-nav" aria-label="六个滚动关键画面"><a href="#hero" data-step="0" aria-label="01 总览">01</a><a href="#form" data-step="1" aria-label="02 琉璃">02</a><a href="#structure" data-step="2" aria-label="03 檐下">03</a><a href="#openings" data-step="3" aria-label="04 门窗">04</a><a href="#interior" data-step="4" aria-label="05 藻井">05</a><a href="#base" data-step="5" aria-label="06 全景结构展开">06</a></nav>
+        <div class="model-controls" id="model-controls" hidden><button type="button" id="zoom-in" aria-label="放大模型">+</button><button type="button" id="zoom-out" aria-label="缩小模型">−</button><button type="button" id="reset-view">返回滚动视角</button></div>
+        <div class="mobile-copy" id="mobile-copy"></div>
+        <p class="motion-note" id="motion-note" hidden>减少动态模式 · 静观祈年殿</p>
+        <div class="scene-footer"><span id="control-help">SCROLL TO EXPLORE · 向下，走近一点</span><span>BEIJING / TEMPLE OF HEAVEN</span></div>
+        <button class="ambient-control" id="ambient-toggle" type="button" aria-pressed="false" aria-label="暂停背景流动"><span class="ambient-dot" aria-hidden="true"></span><span id="ambient-label">背景流动 · 暂停</span></button>
+        <div class="progress-track" aria-hidden="true"><span id="journey-progress"></span></div>
       </div>
-
-      <div class="loading-screen" id="loading-screen">
-        <div class="loading-inner">
-          <div class="loading-mark">QND</div>
-          <div class="loading-line"><span id="loading-progress"></span></div>
-          <div class="loading-copy">
-            <span>TEMPLE OF HEAVEN / LIVE 3D</span>
-            <span id="loading-status">加载建筑模型 · 0%</span>
+      <div class="story-content">
+        <article class="story-panel hero-panel" id="hero">
+          <div class="panel-body">
+            <p class="eyebrow">BEIJING / TEMPLE OF HEAVEN</p><h1>祈年殿</h1>
+            <p class="english">THE HALL OF PRAYER FOR GOOD HARVESTS</p>
+            <p class="description">以一座圆殿，寄托一年的丰收之愿。<br>这里是明清皇帝在孟春举行祈谷礼的地方。</p>
+            <span class="small-note">北京天坛 · 祈谷坛的中心建筑</span>
+            <a class="hero-cue" href="#form" data-step="1">向下探索 <span aria-hidden="true">↓</span></a>
+          </div>
+        </article>
+        <section class="reading-journey" aria-label="建筑细部时间线">
+          <div class="journey-heading"><span class="eyebrow">ARCHITECTURE / 殿宇之间</span><p>从一片蓝瓦，<br>读懂一座祈谷之殿。</p></div>
+          <div class="timeline">
+            <article class="story-panel detail-panel" id="form"><div class="panel-body">
+              <span class="timeline-dot" aria-hidden="true"></span><p class="eyebrow">01 / ROOF · 琉璃</p><h2>以蓝为瓦，<br>与天相应。</h2>
+              <p class="description">三重屋檐层层收束，在鎏金宝顶下汇成圆形轮廓。蓝色琉璃瓦寓意苍穹，也让祈年殿在天坛的天际线上格外鲜明。</p>
+              <ul class="detail-list"><li>三重檐 · 圆形攒尖顶</li><li>1751年，三层屋面统一为蓝瓦</li></ul>
+              <span class="small-note">蓝瓦与圆殿，寄托古人对于天的想象。</span>
+            </div></article>
+            <article class="story-panel detail-panel" id="structure"><div class="panel-body">
+              <span class="timeline-dot" aria-hidden="true"></span><p class="eyebrow">02 / UNDER THE EAVES · 木构</p><h2>重檐之下，<br>木构相承。</h2>
+              <p class="description">梁枋、斗栱与立柱共同承托层层屋檐。彩画沿构架铺展，让结构的秩序与装饰的华彩相互映衬。</p>
+              <ul class="detail-list"><li>龙凤和玺彩画，装点梁枋</li><li>承托与出挑，构成檐下层次</li></ul>
+              <span class="small-note">一层屋檐，也是一层匠心。</span>
+            </div></article>
+            <article class="story-panel detail-panel" id="openings"><div class="panel-body">
+              <span class="timeline-dot" aria-hidden="true"></span><p class="eyebrow">03 / LATTICE · 门窗</p><h2>朱红之间，<br>光影有序。</h2>
+              <p class="description">隔扇与窗棂围合殿身，朱红木作与细密格纹交织。光线穿过格眼，明暗随柱间节奏展开，为庄重的殿堂添上细腻的尺度。</p>
+              <ul class="detail-list"><li>从檐下到门窗，色彩层层相接</li><li>重复的格纹，衬托圆殿的秩序</li></ul>
+              <span class="small-note">蓝瓦、朱柱与白石，彼此映照。</span>
+            </div></article>
+            <article class="story-panel detail-panel" id="interior"><div class="panel-body">
+              <span class="timeline-dot" aria-hidden="true"></span><p class="eyebrow">04 / CAISSON · 藻井</p><h2>仰望之间，<br>四时在殿中。</h2>
+              <p class="description">仰望殿顶，龙凤藻井层层收拢。殿内二十八根楠木柱环列，将四季、月份与时辰的寓意，融入一座建筑的秩序。</p>
+              <ul class="detail-list"><li>四根龙井柱，寓意四季</li><li>十二根金柱与十二根檐柱，分别寓意月份与时辰</li></ul>
+              <span class="small-note">一座殿堂，也寄托着对时序与丰年的期望。</span>
+            </div></article>
+            <article class="story-panel detail-panel" id="base"><div class="panel-body">
+              <span class="timeline-dot" aria-hidden="true"></span><p class="eyebrow">05 / ANATOMY · 建筑构成</p><h2>由局部，<br>读懂整座殿。</h2>
+              <p class="description">蓝瓦覆顶，木柱承托，门窗围合，白石为基。将各部分展开来看，祈年殿由下而上、由外而内的构成便清晰起来。</p>
+              <ul class="detail-list"><li>三层汉白玉台基，托起圆殿</li><li>层层屋檐与柱网，共同构成殿宇轮廓</li></ul>
+              <span class="small-note">结构展开示意 · 非实际拆卸顺序</span>
+            </div></article>
+          </div>
+        </section>
+      </div>
+    </section>
+    <section class="story-end" id="story-end" aria-labelledby="end-title">
+      <div class="end-shell">
+        <div class="end-kicker"><span>终章 · 祈谷之愿</span><span lang="en">A WISH FOR HARVEST</span></div>
+        <div class="end-grid">
+          <div class="end-title-block"><h2 id="end-title">所祈为年，<br>所愿为丰。</h2><span class="end-title-rule" aria-hidden="true"></span></div>
+          <div class="end-reading">
+            <p>在以农事为本的古代社会，岁时更替与五谷丰登，关乎人们的生计。祈年殿把这样的愿望，化作蓝瓦、朱柱与白石之间的建筑语言。</p>
+            <p>从远处的圆形轮廓，到檐下一笔彩画，建筑的美不只在形，也在其中承载的礼仪、时序与生活愿望。</p>
+            <div class="end-actions"><a class="end-replay" href="#hero" data-step="0">再看一次祈年殿 <i aria-hidden="true">↗</i></a><a class="text-link" href="https://www.tiantanpark.cn/scenic_spot_list_g7yU_96/p/1.html" target="_blank" rel="noopener">走进天坛公园官网 ↗</a></div>
           </div>
         </div>
+        <details class="source-notes"><summary><span>延伸阅读与展示说明</span><span class="notes-symbol" aria-hidden="true">+</span></summary><div class="source-notes-content"><p>建筑沿革参考<a href="https://www.tiantanpark.cn/scenic_spot_list_g7yU_96/p/1.html" target="_blank" rel="noopener">天坛公园景点介绍</a>；建筑形制与柱网寓意参考北京市公园管理中心的<a href="https://gygl.beijing.gov.cn/mlgy/mlgy_gyjg01/201912/t20191211_1048233.html" target="_blank" rel="noopener">《祈年殿》</a>与<a href="https://gygl.beijing.gov.cn/whgy/whgy_wsgc/201912/t20191206_885769.html" target="_blank" rel="noopener">《祈年殿：皇帝祈祷五谷丰登的所在》</a>。蓝瓦寓意参考其<a href="https://gygl.beijing.gov.cn/whgy/whgy_wsgc/201912/t20191206_885633.html" target="_blank" rel="noopener">祈年殿建筑介绍</a>。</p><p>画面为基于公开资料的解释性建筑展示；结构展开用于辅助理解，不代表实际拆卸顺序，也不替代文物测绘成果。</p></div></details>
+        <footer class="credits"><span>祈年殿 <i aria-hidden="true">/</i> 天坛建筑漫游</span><span lang="en">THE HALL OF PRAYER FOR GOOD HARVESTS</span></footer>
       </div>
-
-      <header class="site-header">
-        <a class="brand" href="#hero" aria-label="祈年殿历史导览首页">
-          <span class="brand-symbol">祈</span>
-          <span>
-            <strong>QND</strong>
-            <small>天坛 · 历史导览</small>
-          </span>
-        </a>
-
-        <nav class="chapter-nav" aria-label="章节导航">
-          <a href="#form" data-nav="form">礼制</a>
-          <a href="#structure" data-nav="structure">沿革</a>
-          <a href="#openings" data-nav="openings">建筑</a>
-          <a href="#studies" data-nav="studies">遗产</a>
-        </nav>
-
-        <a class="header-action" href="#form">
-          <span>开始阅读</span>
-          <span aria-hidden="true">↗</span>
-        </a>
-      </header>
-
-      <div class="model-status" id="model-status">
-        <span class="status-dot"></span>
-        <span>北京天坛 · 明清皇家祭天建筑</span>
-      </div>
-
-      <main>
-        <section class="chapter chapter--hero" id="hero" data-camera="0">
-          <div class="hero-copy">
-            <p class="eyebrow">北京 · 天坛祈谷坛 · 明清礼制</p>
-            <h1>祈年殿</h1>
-            <p class="hero-en">HALL OF PRAYER<br />FOR GOOD HARVESTS</p>
-            <p class="hero-lede">
-              它曾是帝王祈求丰年的礼仪中心。沿着历史、礼制与建筑，读懂祈年殿如何连接天地与人间。
-            </p>
-            <a class="pill-button" href="#form">
-              <span>从祈谷礼开始</span>
-              <span aria-hidden="true">→</span>
-            </a>
-          </div>
-
-          <div class="hero-meta hero-meta--left">
-            <span>明永乐十八年</span>
-            <span>公元 1420</span>
-          </div>
-          <div class="hero-meta hero-meta--right">
-            <span>世界遗产</span>
-            <span>1998 登录</span>
-          </div>
-
-          <div class="hero-footer">
-            <span class="scroll-cue"><i></i> 向下阅读 · 沿历史走近祈年殿</span>
-            <span class="gaze-cue">拖动或移动鼠标 <b>环看建筑</b></span>
-          </div>
-        </section>
-
-        <section class="chapter chapter--study" id="form" data-camera="1">
-          <div class="section-index">01 / 礼制 · RITUAL</div>
-          <div class="section-copy">
-            <p class="section-kicker">祈谷礼 / PRAYING FOR HARVESTS</p>
-            <h2>为岁时祈谷</h2>
-            <p>
-              明清皇帝每逢孟春在这里举行祈谷礼，祈愿五谷丰登。祈年殿不是孤立的观景建筑，而是天坛祭祀体系中的礼仪中心；仪式、礼乐与空间共同构成与天相通的秩序。
-            </p>
-            <span class="section-note">孟春祈谷 · 皇家礼仪 · 祈愿丰年</span>
-          </div>
-          <div class="focus-line"><span></span></div>
-        </section>
-
-        <section class="chapter chapter--study chapter--study-right" id="structure" data-camera="2">
-          <div class="section-index">02 / 沿革 · HISTORY</div>
-          <div class="section-copy">
-            <p class="section-kicker">名称与形制 / CHANGING FORM</p>
-            <h2>从大祀殿到祈年殿</h2>
-            <p>
-              天坛始建于明永乐十八年（1420），祈年殿所在位置最初建有举行天地合祀的大祀殿。嘉靖九年（1530）改行天地分祭，原大祀殿曾改为祈谷坛；嘉靖二十四年（1545），原址建成圆形大享殿，建筑与祭祀制度随之改变。
-            </p>
-            <span class="section-note">1420 大祀殿 · 1545 大享殿</span>
-          </div>
-          <div class="focus-line"><span></span></div>
-        </section>
-
-        <section class="chapter chapter--study chapter--study-right" id="openings" data-camera="3">
-          <div class="section-index">03 / 建筑 · ARCHITECTURE</div>
-          <div class="section-copy">
-            <p class="section-kicker">圆象天 · 蓝应天 / FORM & SYMBOL</p>
-            <h2>仰望苍穹的殿宇</h2>
-            <p>
-              圆形殿身与三重檐攒尖顶层层向上收束，蓝色琉璃瓦映照苍穹。祈年殿位于天坛南北轴线上，向南经丹陛桥连接圜丘坛，让礼制路线成为可行走的空间秩序。
-            </p>
-            <span class="section-note">圆形殿身 · 三重檐顶 · 南北礼仪轴线</span>
-          </div>
-          <div class="focus-line"><span></span></div>
-        </section>
-
-        <section class="chapter chapter--study" id="interior" data-camera="4">
-          <div class="section-index">04 / 仪典 · CEREMONY</div>
-          <div class="section-copy">
-            <p class="section-kicker">仪式与空间 / RITUAL IN SPACE</p>
-            <h2>礼仪沿中轴展开</h2>
-            <p>
-              祭天并非单一时刻的仪式：斋戒、行礼与礼乐各有秩序。天坛轴线串联祈谷坛与南面的圜丘坛，建筑、行进路线与典礼共同把敬天祈年的观念落实在真实空间之中。
-            </p>
-            <span class="section-note">斋戒 · 礼仪 · 礼乐 · 行进路线</span>
-          </div>
-          <div class="focus-line"><span></span></div>
-        </section>
-
-        <section class="chapter chapter--study chapter--study-right" id="base" data-camera="5">
-          <div class="section-index">05 / 遗产 · LEGACY</div>
-          <div class="section-copy">
-            <p class="section-kicker">焚毁与重建 / SURVIVAL</p>
-            <h2>历经火灾，再度新生</h2>
-            <p>
-              1889年，祈年殿遭雷击起火焚毁；现存殿宇于1896年重建竣工。后来，天坛从皇家祭祀场所成为公众共享的公园，并于1998年列入《世界遗产名录》。
-            </p>
-            <span class="section-note">1889 雷火 · 1896 重建 · 1998 世界遗产</span>
-          </div>
-          <div class="focus-line"><span></span></div>
-        </section>
-
-        <section class="chapter chapter--studies" id="studies" data-camera="5">
-          <div class="studies-head">
-            <div>
-              <p class="section-kicker">06 / 时间轴 · TIMELINE</p>
-              <h2>一座殿宇的几次新生</h2>
-            </div>
-            <p>从明代始建、清代定名，到雷火后的重建与世界遗产保护。</p>
-          </div>
-
-          <div class="history-timeline">
-            <article class="timeline-entry">
-              <span class="timeline-year">1420</span>
-              <h3>天地坛建成</h3>
-              <p>明永乐十八年，天地坛建成，原址建大祀殿。</p>
-            </article>
-            <article class="timeline-entry">
-              <span class="timeline-year">1530—1545</span>
-              <h3>分祭与改建</h3>
-              <p>天地分祀后，大祀殿拆除；原址历经数年营建，改为圆形大享殿。</p>
-            </article>
-            <article class="timeline-entry">
-              <span class="timeline-year">1751</span>
-              <h3>定名祈年殿</h3>
-              <p>清乾隆十六年赐名祈年殿，清代将殿顶统一为青色琉璃瓦。</p>
-            </article>
-            <article class="timeline-entry">
-              <span class="timeline-year">1889—1896</span>
-              <h3>雷火与重建</h3>
-              <p>光绪十五年遭雷火焚毁，光绪二十二年重建竣工。</p>
-            </article>
-            <article class="timeline-entry">
-              <span class="timeline-year">1918—1998</span>
-              <h3>从公园到遗产</h3>
-              <p>天坛向公众开放；1998年列入联合国教科文组织世界遗产名录。</p>
-            </article>
-          </div>
-
-          <div class="studies-footer">
-            <span>历史信息以公开文献与遗产资料为据</span>
-            <span class="progress-dots"><i class="is-active"></i><i></i><i></i><i></i></span>
-          </div>
-        </section>
-
-        <section class="chapter chapter--colophon" id="colophon" data-camera="5">
-          <div class="colophon-copy">
-            <p class="section-kicker">资料来源 · SOURCES</p>
-            <h2>继续了解天坛</h2>
-            <p>
-              本页历史梳理参考联合国教科文组织世界遗产中心、天坛公园沿革及北京市政府公开资料。页面中的三维建筑仅用于辅助观看，不替代文物测绘档案。
-            </p>
-            <a class="text-link" href="#hero">回到祈年殿 <span>↗</span></a>
-          </div>
-          <div class="colophon-meta">
-            <div>
-              <small>世界遗产 · UNESCO</small>
-              <a href="https://whc.unesco.org/en/list/881" target="_blank" rel="noreferrer"><strong>天坛：北京的皇家祭坛</strong><span>1998 年列入《世界遗产名录》 ↗</span></a>
-            </div>
-            <div>
-              <small>历史沿革 · 北京文物</small>
-              <a href="https://wwj.beijing.gov.cn/bjww/resource/cms/article/362762/515679/2018052316344378412.pdf" target="_blank" rel="noreferrer"><strong>明清北京坛庙历史资料</strong><span>查看祈谷坛与祈年殿相关记录 ↗</span></a>
-            </div>
-            <div>
-              <small>建筑形制 · 北京市公园管理中心</small>
-              <a href="https://tiantanpark.cn/scenic_spot_list/detail/1254.html" target="_blank" rel="noreferrer"><strong>天坛公园 · 祈年殿</strong><span>查看建筑与名称沿革 ↗</span></a>
-            </div>
-            <div>
-              <small>天坛开放 · 北京文旅</small>
-              <a href="https://s.visitbeijing.com.cn/attraction/101409" target="_blank" rel="noreferrer"><strong>天坛公园开放百年</strong><span>了解 1918 年开放历史 ↗</span></a>
-            </div>
-          </div>
-          <p class="copyright">北京天坛 · 祈年殿历史导览</p>
-        </section>
-      </main>
-    </div>
-
-  </body>
-</html>
+    </section>
+  </main>
+</body></html>

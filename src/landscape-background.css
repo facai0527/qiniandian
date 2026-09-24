@@ -1,0 +1,26 @@
+/* Real reference-led artwork, not a flat hue or geometric-shard approximation. */
+:root{--landscape-wide:url('/art/gilded-landscape-wide-v1.png');--landscape-mobile:url('/art/gilded-landscape-mobile-v1.png');--landscape-art:var(--landscape-wide);--theme-bg:var(--warm-paper);--void:var(--warm-paper)}
+.sky{background:var(--warm-paper) var(--landscape-art) center/cover;transform:none;will-change:auto}.sky:after{display:none}.aero-fallback{display:none}#aero-background{opacity:1;mask-image:none}
+.landscape-scene{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.landscape-view{position:absolute;inset:0}
+.landscape-painting{display:block;position:absolute;width:100%;height:100%;object-fit:cover;object-position:center}
+.landscape-video{border:0;background:transparent}
+body[data-aero-state="fallback"] .landscape-video{visibility:hidden}
+.site-nav{background:linear-gradient(120deg,#f5efe0df,#d5c5aeea);border-color:#7e54215e;box-shadow:0 8px 32px #3e3a3310,0 1px 0 #f5efe080 inset}
+.site-nav .pill,.model-controls button{background:#f5efe066}
+.reading-scrim{background:linear-gradient(90deg,transparent 27%,transparent 40%,#d5c5ae40 67%,#d5c5ae75 97%);mask-image:none}
+.glass-rail{background:linear-gradient(90deg,transparent,#d5c5ae14 28%)}
+/* Reveal the moving painting itself, instead of covering it with a second static screenshot. */
+.model-viewport{mask-image:linear-gradient(90deg,#000 27%,#000 40%,rgb(0 0 0 / calc(1 - var(--detail-visibility,0)*.94)) 67%,rgb(0 0 0 / calc(1 - var(--detail-visibility,0))) 97%),linear-gradient(0deg,rgb(0 0 0 / var(--detail-visibility,0)) 0%,rgb(0 0 0 / calc(.1 + var(--detail-visibility,0)*.9)) 15%,rgb(0 0 0 / calc(.6 + var(--detail-visibility,0)*.4)) 31%,#000 54%);mask-composite:intersect}
+.model-viewport:after{display:none}.model-viewport.is-interactive{mask-image:none}
+.stage-meta,.stage-meta b,.stage-meta span,.scene-footer,body[data-model-state="ready"] .model-loading{color:var(--charcoal)}
+.scene-footer>span,body[data-model-state="ready"] .model-loading{text-shadow:0 1px 2px #f5efe0,0 0 8px #f5efe0}
+.story-end{background:linear-gradient(#d5c5aee8,#d5c5aee8),var(--landscape-art) center/cover}
+@media(max-width:760px){
+  :root{--landscape-art:var(--landscape-mobile)}
+  #aero-background{opacity:1;mask-image:none}.sky{inset:-10px -20px -100px}.sky:after{display:none}
+  .landscape-painting{object-position:center top}
+  .model-viewport{mask-image:none}
+  .mobile-copy:before{content:"";position:absolute;inset:-14px -22px;background:linear-gradient(90deg,#d5c5ae80,#f5efe0b3 40%,#d5c5ae70);mask-image:linear-gradient(transparent,#000 12%,#000 84%,transparent);pointer-events:none}
+  .top-links{background:#d5c5aefa}.top-links a{background:#f5efe04d}
+}
